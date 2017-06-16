@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+
+  prometheus_srv:
+    # build: ./mane_tool
+    image: prom/prometheus
+    container_name: prometheus_server
+    hostname: prometheus_server
+    privileged: true
+    # restart: always
+    # command: /bin/bash
+    # links:
+      # - container_name
+    # environment:
+      # - DATABASE_NAME=dbname
+    # ports:
+      # - "8888:8888"
+    # depends_on:
+      # - container_name
+ 
+  prometheus_node:
+    image: prom/node-exporter
+    container_name: prom_node_exporter
+    hostname: prom_node_exporter
+    privileged: true
+
+

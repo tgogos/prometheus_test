@@ -24,5 +24,15 @@ services:
     container_name: prom_node_exporter
     hostname: prom_node_exporter
     privileged: true
+    depends_on:
+      - prometheus_srv
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana_server
+    hostname: grafana_server
+    privileged: true
+    depends_on:
+      - prometheus_srv
 
 

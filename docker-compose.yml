@@ -3,7 +3,7 @@ version: '2'
 services:
 
   prometheus_srv:
-    # build: ./mane_tool
+    build: ./prom_serv
     image: prom/prometheus
     container_name: prometheus_server
     hostname: prometheus_server
@@ -23,6 +23,14 @@ services:
     image: prom/node-exporter
     container_name: prom_node_exporter
     hostname: prom_node_exporter
+    privileged: true
+    depends_on:
+      - prometheus_srv
+
+  prometheus_node2:
+    image: prom/node-exporter
+    container_name: prom_node_exporter2
+    hostname: prom_node_exporter2
     privileged: true
     depends_on:
       - prometheus_srv
